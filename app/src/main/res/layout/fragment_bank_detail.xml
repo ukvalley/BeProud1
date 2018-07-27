@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PersonalDetailFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="#000000"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Pan Number"
+                    />
+
+                <TextView
+                    android:id="@+id/profile_pan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="220dp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="20dp"
+                    android:text="Umesh@gmail.com"
+                    android:textAllCaps="true"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#c9c5c5"
+                    android:layout_marginTop="50dp"
+                    />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:textColor="#000000"
+                    android:text="pan image"
+                    android:textAllCaps="true"
+                    />
+
+                <ImageView
+                    android:id="@+id/profile_panimage"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:textColor="#000000"
+                    android:src="@drawable/ladyuser"
+                    android:layout_marginLeft="220dp"
+                    android:layout_marginTop="20dp"
+                    android:text="12/10/1995"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#c9c5c5"
+                    android:layout_marginTop="100dp"
+                    />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:layout_margin="20dp"
+                    android:text="IFSC CODE"
+                    android:textAllCaps="true"
+                    />
+
+                <TextView
+                    android:id="@+id/profile_ifsc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="220dp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="20dp"
+                    android:text="123456"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#c9c5c5"
+                    android:layout_marginTop="50dp"
+                    />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:layout_margin="20dp"
+                    android:text="bank name"
+                    android:textAllCaps="true"
+                    />
+
+                <TextView
+                    android:id="@+id/profile_bankname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="220dp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="20dp"
+                    android:text="123456"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#c9c5c5"
+                    android:layout_marginTop="50dp"
+                    />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:layout_margin="20dp"
+                    android:text="branch name"
+                    android:textAllCaps="true"
+                    />
+
+                <TextView
+                    android:id="@+id/profile_branch_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="220dp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="20dp"
+                    android:text="123456"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#c9c5c5"
+                    android:layout_marginTop="50dp"
+                    />
+
+
+            </RelativeLayout>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
