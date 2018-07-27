@@ -3,7 +3,7 @@ package com.ukvalley.umeshkhivasara.beproud.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Datamodel {
-    @SerializedName("success")
+    @SerializedName("status")
     private String status;
     @SerializedName("message")
     private String message;

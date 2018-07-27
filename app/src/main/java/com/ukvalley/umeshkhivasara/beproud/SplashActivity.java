@@ -20,8 +20,8 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         sessionManager = new SessionManager(this);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+      //  ActionBar actionBar = getSupportActionBar();
+      //  actionBar.hide();
 
         advertise = (ImageView) findViewById(R.id.advertisement);
         CountDownTimer countDownTimer = new CountDownTimer(3000, 1500) {

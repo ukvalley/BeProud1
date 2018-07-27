@@ -28,8 +28,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_title"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="30dp"
         android:background="#fff"
@@ -180,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:singleLine="true"
-                    android:drawableLeft="@drawable/city"
+                    android:drawableLeft="@drawable/dream"
                     android:drawableTint="#FF4081"
                     android:hint="Your Dream in Life"
                     android:inputType="text" />
@@ -196,7 +196,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:singleLine="true"
-                    android:drawableLeft="@drawable/city"
+                    android:drawableLeft="@drawable/dob"
                     android:drawableTint="#FF4081"
                     android:hint="Birth date"
                     android:inputType="date" />
@@ -208,10 +208,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:singleLine="true"
+                android:textAlignment="center"
                 android:textSize="18sp"
-                android:drawableTint="#FF4081"
-                android:hint="Don't have account yet... Sign in now"
-                android:inputType="date" />
+                android:hint="Click here to Log in"
+                 />
 
           <!--  <TextView
                 android:layout_width="wrap_content"

@@ -37,7 +37,7 @@ public class SessionManager
     private static final String IS_LOGIN = "IsLoggedIn";
 
     // User name (make variable public to access from outside)
-    public static final String KEY_NAME = "name";
+    public static final String KEY_EMAIL = "email";
 
     // Email address (make variable public to access from outside)
 
@@ -55,7 +55,7 @@ public class SessionManager
     public void createLoginSession(String email){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
-
+        editor.putString(KEY_EMAIL, email);
         // Storing name in pref
 
         // commit changes
@@ -90,14 +90,14 @@ public class SessionManager
     /**
      * Get stored session data
      * */
-    public HashMap<String, String> getUserDetails(){
-        HashMap<String, String> user = new HashMap<>();
+    public String getUserDetails(){
+       String email;
         // user name
-        user.put(KEY_NAME, pref.getString(KEY_NAME, null));
 
+        email=pref.getString(KEY_EMAIL,null);
 
         // return user
-        return user;
+        return email;
     }
 
     /**

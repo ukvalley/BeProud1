@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/D:/android_setup/Android_setup/new_android/new%20android/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_open_with_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/D:/android_setup/Android_setup/new_android/new%20android/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_date_range_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="branches" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="date" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\Umesh Khivasara" />
                           </map>

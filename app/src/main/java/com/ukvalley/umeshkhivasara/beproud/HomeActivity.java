@@ -1,10 +1,12 @@
 package com.ukvalley.umeshkhivasara.beproud;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,11 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Toolbar toolbar;
+        toolbar =  findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
         GridView gridView=findViewById(R.id.gridview);
        CustomGridAdapter myadapter=new CustomGridAdapter(HomeActivity.this,menu_tilte);
         gridView.setAdapter(myadapter);
@@ -33,35 +40,18 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-
+                if (i==0)
+                {
+                    Intent intent=new Intent(HomeActivity.this,ProfileActivity.class);
+                    startActivity(intent);
+                }
+                if (i==6){
+                    Intent intent=new Intent(HomeActivity.this,NewsActivity.class);
+                    startActivity(intent);
+                }
 
             }
         });
-    }
-
-    public class Myadapter extends BaseAdapter{
-        @Override
-        public int getCount() {
-            return menu_tilte.length;
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return menu_tilte[i];
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return i;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            LayoutInflater inflater=HomeActivity.this.getLayoutInflater();
-            View view1=inflater.inflate(R.layout.grid_layout, null,true);
-
-            return view;
-        }
     }
 
     public class CustomGridAdapter extends BaseAdapter {

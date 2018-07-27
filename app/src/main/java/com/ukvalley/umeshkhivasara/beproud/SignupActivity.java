@@ -39,7 +39,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
     Button button_signup;
     Button button_makepayment;
     String str_email;
-    
+
     private void callInstamojoPay(String email, String phone, String amount, String purpose, String buyername) {
         final Activity activity = this;
         InstamojoPay instamojoPay = new InstamojoPay();
@@ -71,6 +71,8 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG)
                         .show();
 
+
+
                 sessionManager.createLoginSession(str_email);
                 Intent intent=new Intent(SignupActivity.this,HomeActivity.class);
                 startActivity(intent);
@@ -90,8 +92,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Call the function callInstamojo to start payment here
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+
         editText_birthdate = findViewById(R.id.edt_birthdate);
         editText_username=findViewById(R.id.edt_name);
         editText_mobilenumber=findViewById(R.id.edt_mobile);
@@ -222,7 +223,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         });
     }
 
-  /*  private void getData(){
+  /*  private void getGetSingleUser(){
         RetrofitAPI apiService = SignupClient.getClient().create(RetrofitAPI.class);
         Call<Signupmodel1> call = apiService.getUsers();
         call.enqueue(new Callback<Signupmodel1>() {
