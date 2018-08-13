@@ -20,13 +20,29 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+
     </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="3dp"
         app:cardPreventCornerOverlap="false">
+        <ProgressBar
+            android:id="@+id/newsdisplaypbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/colorPrimaryDark"
+
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,7 +52,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ProgressBar
-                    android:id="@+id/displaynewsprogressbar"
                     style="@style/Widget.AppCompat.ProgressBar"
                     android:layout_width="@dimen/activity_margin"
                     android:layout_height="@dimen/activity_margin"
@@ -54,52 +69,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-
+                android:layout_marginTop="10dp"
                 android:background="@android:color/white"
                 android:orientation="vertical"
                 >
 
-                <RelativeLayout
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginRight="24dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/displaynewsdate"
-                        style="@style/TextAppearance.AppCompat.Caption"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.38"
-                        android:layout_alignParentRight="true"
-                        android:gravity="end"
-                        android:layout_marginRight="10dp"
-                        android:drawableLeft="@drawable/date"
-                        android:drawableTint="@color/primary_color"
-                        android:maxLines="1"
-                        android:textStyle="bold"
-                        tools:text="2009 | EN"/>
-
-                    <TextView
-                        android:id="@+id/displaynewscity"
-                        style="@style/TextAppearance.AppCompat.Caption"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.38"
-                        android:layout_alignParentLeft="true"
-                        android:gravity="end"
-                        android:drawableLeft="@drawable/city"
-                        android:drawableTint="@color/primary_color"
-                        android:layout_marginLeft="10dp"
-                        android:maxLines="1"
-                        android:textStyle="bold"
-                        tools:text="2009 | EN"/>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
+                    android:orientation="vertical"
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/dispalynewstitle"
@@ -107,26 +86,56 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/activity_margin_content"
-                        android:drawableLeft="@drawable/bonus"
-                        android:drawableTint="@color/primary_color"
                         android:layout_marginStart="@dimen/activity_margin_content"
                         android:layout_marginTop="@dimen/activity_margin_quarter"
-                        android:maxLines="1"
                         tools:text="Movie Title"/>
 
+                    <RelativeLayout
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/displaynewsdate"
+                            style="@style/TextAppearance.AppCompat.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:gravity="end"
+                            android:drawableLeft="@drawable/date"
+                            android:drawableTint="@color/primary_color"
+                            android:maxLines="1"
+                            android:textStyle="bold"
+                            tools:text="2009 | EN"/>
 
+                        <TextView
+                            android:id="@+id/displaynewscity"
+                            style="@style/TextAppearance.AppCompat.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
 
-                </RelativeLayout>
+                            android:layout_alignParentLeft="true"
+                            android:gravity="end"
+                            android:drawableLeft="@drawable/city"
+                            android:drawableTint="@color/primary_color"
+                            android:maxLines="1"
+                            android:textStyle="bold"
+                            tools:text="2009 | EN"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
                 <TextView
                     android:id="@+id/displaynewsdata"
                     style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/activity_margin_content"
-                    android:layout_marginStart="@dimen/activity_margin_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
                     android:layout_marginTop="@dimen/activity_margin_half"
                     android:layout_marginBottom="@dimen/activity_margin_half"
-                    android:drawableLeft="@drawable/date"
                     android:drawableTint="@color/primary_color"
                     android:ellipsize="end"
                     tools:text="Nowadays, user engagement is considered one of the most important metrics for the success of your app"/>
@@ -137,5 +146,6 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
+    </ScrollView>
 
 </LinearLayout>

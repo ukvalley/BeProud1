@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PersonalDetailFragment">
+    tools:context=".fragments.PersonalDetailFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -14,37 +14,41 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="wrap_content"
-        android:textColor="#000000"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="LAST NAME"
-        />
-        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/profile_lastname"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            android:layout_marginLeft="220dp"
             android:textColor="#000000"
-            android:layout_marginTop="20dp"
-            android:text="Umesh Jain"
-            android:textAllCaps="true"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="FULL NAME"
             />
-        
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="1dp"
-           android:background="#c9c5c5"
-           android:layout_marginTop="50dp"
-           />
+
+        <EditText
+            android:id="@+id/profile_firstname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#c9c5c5"
+            android:layout_marginTop="50dp"
+            />
+
+        </RelativeLayout>
 
 
-</RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -58,14 +62,16 @@
             android:textAllCaps="true"
             />
 
-        <TextView
+        <EditText
             android:id="@+id/profile_dob"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"
-            android:layout_marginLeft="220dp"
-            android:layout_marginTop="20dp"
-            android:text="12/10/1995"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="8dp"
+
             />
 
         <RelativeLayout
@@ -77,6 +83,41 @@
 
 
     </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:text="Anniversary"
+                android:textAllCaps="true"
+                />
+
+            <EditText
+                android:id="@+id/profile_ann_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="8dp"
+
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#c9c5c5"
+                android:layout_marginTop="50dp"
+                />
+
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -90,14 +131,15 @@
                 android:textAllCaps="true"
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_distributor_id"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
+                android:layout_marginLeft="150dp"
                 android:textColor="#000000"
-                android:layout_marginTop="20dp"
-                android:text="123456"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+
                 />
 
             <RelativeLayout
@@ -118,18 +160,20 @@
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
                 android:layout_margin="20dp"
-                android:text=" co Distributor title"
+                android:text=" co Dist. title"
                 android:textAllCaps="true"
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_distributor_co_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:layout_marginLeft="150dp"
                 android:textColor="#000000"
-                android:layout_marginTop="20dp"
-                android:text="123456"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+
                 />
 
             <RelativeLayout
@@ -150,18 +194,20 @@
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
                 android:layout_margin="20dp"
-                android:text="co Distributor name"
+                android:text="co Dist. name"
                 android:textAllCaps="true"
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_co_distributor_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
+                android:layout_marginLeft="150dp"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:textColor="#000000"
-                android:layout_marginTop="20dp"
-                android:text="123456"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+
                 />
 
             <RelativeLayout
@@ -182,18 +228,21 @@
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
                 android:layout_margin="20dp"
-                android:text="co Distributor DOB"
+                android:text="co Dist. DOB"
                 android:textAllCaps="true"
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_co_distributor_dob"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
+
+                android:layout_marginLeft="150dp"
                 android:textColor="#000000"
-                android:layout_marginTop="20dp"
-                android:text="123456"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+
                 />
 
             <RelativeLayout
@@ -219,14 +268,16 @@
                 android:textAllCaps="true"
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_upline"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
+                android:layout_marginLeft="150dp"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:textColor="#000000"
-                android:layout_marginTop="20dp"
-                android:text="123456"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+
                 />
 
             <RelativeLayout
@@ -251,14 +302,16 @@
                 android:textAllCaps="true"
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_designation"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
+                android:layout_marginLeft="150dp"
                 android:textColor="#000000"
-                android:layout_marginTop="20dp"
-                android:text="123456"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+
                 />
 
             <RelativeLayout
@@ -273,6 +326,27 @@
 
 
 
+        <Button
+            android:id="@+id/btn_update_personal_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Update Personal Details"
+            android:textColor="#FFFFFF"
+            />
+
     </LinearLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/personalpbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimaryDark"
+        />
+
 </FrameLayout>

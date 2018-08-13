@@ -5,6 +5,7 @@ package com.ukvalley.umeshkhivasara.beproud.supports;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import com.ukvalley.umeshkhivasara.beproud.HomeActivity;
 import com.ukvalley.umeshkhivasara.beproud.SignupActivity;
@@ -71,7 +72,7 @@ public class SessionManager
         // Check login status
         if(!this.isLoggedIn()){
             // user is not logged in redirect him to Login Activity
-            Intent i = new Intent(_context, SignupActivity.class);
+            Intent i = new Intent(_context, SigninActivity.class);
             // Closing all the Activities
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
@@ -118,6 +119,8 @@ public class SessionManager
 
         // Staring Login Activity
         _context.startActivity(i);
+
+        Toast.makeText(_context, "Logout User", Toast.LENGTH_SHORT).show();
     }
 
     /**

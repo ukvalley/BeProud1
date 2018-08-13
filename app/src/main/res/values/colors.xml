@@ -3,19 +3,12 @@
 
     <color name="colorPrimary">#125688</color>
     <color name="colorPrimaryDark">#125688</color>
-    <color name="textColorPrimary">#FFFFFF</color>
-    <color name="windowBackground">#FFFFFF</color>
-    <color name="navigationBarColor">#000000</color>
-    <color name="colorAccent">#c8e8ff</color>
+    <color name="colorAccent">#bcbcbc</color>
 
     <color name="mdtp_accent_color">#009688</color>
     <color name="mdtp_accent_color_dark">#00796b</color>
 
-    <color name="startblue">#5fb0c9</color>
-    <color name="endblue">#00c5df</color>
-
-    <color name="graylight">#f7f7f7</color>
-
     <color name="background">#EFEFEF</color>
-    <color name="placeholder_grey">#AAADC4</color>
+
+
 </resources>

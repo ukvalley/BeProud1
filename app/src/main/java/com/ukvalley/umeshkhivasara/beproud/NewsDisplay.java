@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -14,21 +17,21 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.ukvalley.umeshkhivasara.beproud.interfaces.RetrofitAPI;
-import com.ukvalley.umeshkhivasara.beproud.model.GetSingleUserSupport;
 import com.ukvalley.umeshkhivasara.beproud.model.singlenews.SingleNewsModel;
+import com.ukvalley.umeshkhivasara.beproud.supports.SessionManager;
 import com.ukvalley.umeshkhivasara.beproud.supports.SignupClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static net.steamcrafted.materialiconlib.MaterialDrawableBuilder.IconValue.LOADING;
-
 public class NewsDisplay extends AppCompatActivity {
 
     private static final String BASE_URL_IMG = "http://www.sunclubs.org/test/test_api/public/news/";
     TextView newstilte,newscity,newsdate,newsdata;
     ImageView newsimage;
+    SessionManager sessionManager;
+    ProgressBar progressBarnewsdisply;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,8 @@ public class NewsDisplay extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent=getIntent();
         String id=intent.getStringExtra("Key");
+        progressBarnewsdisply=findViewById(R.id.newsdisplaypbar);
+        sessionManager=new SessionManager(NewsDisplay.this);
 
         newscity=findViewById(R.id.displaynewscity);
         newsdata=findViewById(R.id.displaynewsdata);
@@ -95,7 +100,7 @@ public class NewsDisplay extends AppCompatActivity {
 
 
 //
-
+                    progressBarnewsdisply.setVisibility(View.INVISIBLE);
 
 
 
@@ -103,9 +108,35 @@ public class NewsDisplay extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SingleNewsModel> call, Throwable t) {
-
+                progressBarnewsdisply.setVisibility(View.INVISIBLE);
             }
         });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id==R.id.action_logout)
+        {
+            sessionManager.logoutUser();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        NewsDisplay.this.finish();
     }
 }
 

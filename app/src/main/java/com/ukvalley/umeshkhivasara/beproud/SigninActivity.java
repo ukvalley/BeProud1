@@ -1,7 +1,9 @@
 package com.ukvalley.umeshkhivasara.beproud;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -75,6 +77,7 @@ public class SigninActivity extends AppCompatActivity {
                     sessionManager.createLoginSession(email);
                     Intent intent=new Intent(SigninActivity.this,HomeActivity.class);
                     startActivity(intent);
+                    SigninActivity.this.finish();
                     // progressDialog.dismiss();
 
                 }else{
@@ -91,4 +94,31 @@ public class SigninActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed () {
+
+        new AlertDialog.Builder(this)
+                .setTitle("Really Exit?")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SigninActivity.super.onBackPressed();
+                        quit();
+                    }
+                }).create().show();
+    }
+
+
+
+    public void quit () {
+        Intent start = new Intent(Intent.ACTION_MAIN);
+        start.addCategory(Intent.CATEGORY_HOME);
+        start.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        start.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(start);
+    }
+
 }

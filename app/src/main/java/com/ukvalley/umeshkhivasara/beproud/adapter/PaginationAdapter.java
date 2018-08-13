@@ -1,4 +1,4 @@
-package com.ukvalley.umeshkhivasara.beproud;
+package com.ukvalley.umeshkhivasara.beproud.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.ukvalley.umeshkhivasara.beproud.NewsDisplay;
+import com.ukvalley.umeshkhivasara.beproud.R;
 import com.ukvalley.umeshkhivasara.beproud.model.newsmodel.NewsPaginationData;
 
 import java.util.ArrayList;
@@ -74,6 +76,8 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private RecyclerView.ViewHolder getViewHolder(ViewGroup parent, LayoutInflater inflater) {
         RecyclerView.ViewHolder viewHolder;
         View v1 = inflater.inflate(R.layout.fragment_news, parent, false);
+
+
         viewHolder = new MovieVH(v1);
         return viewHolder;
     }
@@ -86,6 +90,16 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         switch (getItemViewType(position)) {
             case ITEM:
                 final MovieVH movieVH = (MovieVH) holder;
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent  intent=new Intent(context,NewsDisplay.class);
+                        String id=String.valueOf(result.getId());
+                        intent.putExtra("Key",id);
+                        context.startActivity(intent);
+                    }
+                });
 
                 movieVH.mMovieTitle.setText(result.getTitle());
                 movieVH.mMovieTitle.setClickable(true);

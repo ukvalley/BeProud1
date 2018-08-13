@@ -1,5 +1,6 @@
 package com.ukvalley.umeshkhivasara.beproud;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.Activity;
 import instamojo.library.InstapayListener;
@@ -8,15 +9,21 @@ import instamojo.library.Config;
 import org.json.JSONObject;
 import org.json.JSONException;
 import android.content.IntentFilter;
-import android.support.v7.app.ActionBar;
+import android.net.Uri;
+
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import com.ukvalley.umeshkhivasara.beproud.interfaces.RetrofitAPI;
 import com.ukvalley.umeshkhivasara.beproud.model.SignupResponsemodel;
 import com.ukvalley.umeshkhivasara.beproud.supports.SessionManager;
@@ -33,12 +40,19 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
 
     SessionManager sessionManager;
 
-    TextView editText_birthdate,textView_alreadyregister;
-    EditText editText_username,editText_mobilenumber,editText_city,editText_email,editText_education,editText_profession,editText_brandname,editText_dream,editText_pass;
+    TextView textView_alreadyregister;
+    EditText editText_birthdate,editText_ann_date;
+    EditText editText_adharno, editText_username,editText_mobilenumber,editText_city,editText_email,editText_education,editText_profession,editText_brandname,editText_dream,editText_pass;
     private DatePickerDialog dpd;
+    private DatePickerDialog dpd1;
     Button button_signup;
     Button button_makepayment;
     String str_email;
+    
+    ProgressBar progressBar_signup;
+
+    public static final int FLAG_BIRTH = 0;
+    public static final int FLAG_ANNIVERSARY = 1;
 
     private void callInstamojoPay(String email, String phone, String amount, String purpose, String buyername) {
         final Activity activity = this;
@@ -76,6 +90,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
                 sessionManager.createLoginSession(str_email);
                 Intent intent=new Intent(SignupActivity.this,HomeActivity.class);
                 startActivity(intent);
+                finish();
             }
 
             @Override
@@ -93,7 +108,36 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         setContentView(R.layout.activity_main);
         // Call the function callInstamojo to start payment here
 
-        editText_birthdate = findViewById(R.id.edt_birthdate);
+
+        FirebaseDynamicLinks.getInstance()
+                .getDynamicLink(getIntent())
+                .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
+                    @Override
+                    public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
+                        // Get deep link from result (may be null if no link is found)
+                        Uri deepLink = null;
+                        if (pendingDynamicLinkData != null) {
+                            deepLink = pendingDynamicLinkData.getLink();
+                        }
+                        //
+                        // If the user isn't signed in and the pending Dynamic Link is
+                        // an invitation, sign in the user anonymously, and record the
+                        // referrer's UID.
+                        //
+
+                      //  FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        if (deepLink != null) {
+                            String referrerUid = deepLink.getQueryParameter("invitedby");
+                            Toast.makeText(SignupActivity.this, referrerUid, Toast.LENGTH_SHORT).show();
+                           // createAnonymousAccountWithReferrerInfo(referrerUid);
+                        }
+                    }
+                });
+
+
+
+
+    editText_birthdate = findViewById(R.id.edt_birthdate);
         editText_username=findViewById(R.id.edt_name);
         editText_mobilenumber=findViewById(R.id.edt_mobile);
         editText_city=findViewById(R.id.edt_city);
@@ -103,6 +147,12 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         editText_brandname=findViewById(R.id.edt_brandname);
         editText_dream=findViewById(R.id.edt_dream);
         editText_pass=findViewById(R.id.edt_pass);
+        editText_adharno=findViewById(R.id.edt_adharno);
+
+        progressBar_signup=findViewById(R.id.signup_pbar);
+        
+        editText_ann_date=findViewById(R.id.edt_ann_date);
+
         sessionManager=new SessionManager(SignupActivity.this);
 
         textView_alreadyregister=findViewById(R.id.edtalreadyregister);
@@ -125,10 +175,9 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
 
         button_signup = findViewById(R.id.edt_btn_signup);
 
-
-        editText_birthdate.setOnClickListener(new View.OnClickListener() {
+        editText_ann_date.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Calendar now = Calendar.getInstance();
                 /*
                 It is recommended to always create a new instance whenever you need to show a Dialog.
@@ -150,8 +199,38 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
                             now.get(Calendar.DAY_OF_MONTH)
                     );
                 }
-
+                setFlag(FLAG_ANNIVERSARY);
                 dpd.show(getFragmentManager(), "Datepickerdialog");
+            }
+        });
+
+        editText_birthdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar now = Calendar.getInstance();
+                /*
+                It is recommended to always create a new instance whenever you need to show a Dialog.
+                The sample app is reusing them because it is useful when looking for regressions
+                during testing
+                 */
+                if (dpd1 == null) {
+                    dpd1 = DatePickerDialog.newInstance(
+                            SignupActivity.this,
+                            now.get(Calendar.YEAR),
+                            now.get(Calendar.MONTH),
+                            now.get(Calendar.DAY_OF_MONTH)
+                    );
+                } else {
+                    dpd1.initialize(
+                            SignupActivity.this,
+                            now.get(Calendar.YEAR),
+                            now.get(Calendar.MONTH),
+                            now.get(Calendar.DAY_OF_MONTH)
+                    );
+                }
+
+                setFlag(FLAG_BIRTH);
+                dpd1.show(getFragmentManager(), "Datepickerdialog");
             }
         });
 
@@ -173,87 +252,102 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
                 String str_birthdate= editText_birthdate.getText().toString();
                 String str_pass=editText_pass.getText().toString();
 
+                String str_ann_date=editText_ann_date.getText().toString();
+
+                String str_adharno=editText_adharno.getText().toString();
 
 
 
 
-                insertData(str_name,str_mobile,str_city,str_email,str_pass,str_education,str_profession,str_brandname,str_dream,str_birthdate);
+
+                insertData(str_name,str_mobile,str_city,str_email,str_pass,str_adharno,str_education,str_profession,str_brandname,str_dream,str_birthdate,str_ann_date);
+                progressBar_signup.setVisibility(View.VISIBLE);
             }
         });
     }
+    private int flag = 0;
 
+
+    public void setFlag(int i) {
+
+        flag = i;
+    }
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        String date =+dayOfMonth+"/"+(++monthOfYear)+"/"+year;
-        editText_birthdate.setText(date);
-        Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
+
+        if (flag==FLAG_BIRTH) {
+            String date = +dayOfMonth + "/" + (++monthOfYear) + "/" + year;
+            editText_birthdate.setText(date);
+            Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
+        }
+        if (flag==FLAG_ANNIVERSARY)
+        {
+            String date = +dayOfMonth + "/" + (++monthOfYear) + "/" + year;
+            editText_ann_date.setText(date);
+            Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
+
+        }
     }
 
 
-    private void insertData(String username, String mobile, String city, final String email, String password, String education, String profession, String brandname, String dream, String dob){
+
+    private void insertData(String username, String mobile, String city, final String email, String password, String str_adharno, String education, String profession, String brandname, String dream, String dob, String ann_date){
         RetrofitAPI apiService = SignupClient.getClient().create(RetrofitAPI.class);
-        Call<SignupResponsemodel> call = apiService.insertuser(username,mobile,city,email,password,education,profession,brandname,dream,dob);
+        Call<SignupResponsemodel> call = apiService.insertuser(username,mobile,city,email,password, str_adharno, education,profession,brandname,dream,dob,ann_date);
         call.enqueue(new Callback<SignupResponsemodel>() {
             @Override
             public void onResponse(Call<SignupResponsemodel> call, Response<SignupResponsemodel> response) {
 
                 SignupResponsemodel insertFoodResponseModel = response.body();
 
-                //check the status code
                 if(insertFoodResponseModel.getStatus().equals("success")){
-                    Toast.makeText(SignupActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(SignupActivity.this, "Registration Success Please Make Payment", Toast.LENGTH_SHORT).show();
+                    progressBar_signup.setVisibility(View.INVISIBLE);
                     button_makepayment.setVisibility(View.VISIBLE);
 
-
-
-                   // progressDialog.dismiss();
                 }else{
-                    Toast.makeText(SignupActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                  //  progressDialog.dismiss();
+
                 }
             }
 
             @Override
             public void onFailure(Call<SignupResponsemodel> call, Throwable t) {
-                Toast.makeText(SignupActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                editText_username.setText(t.getMessage());
-               // progressDialog.dismiss();
             }
         });
     }
 
-  /*  private void getGetSingleUser(){
-        RetrofitAPI apiService = SignupClient.getClient().create(RetrofitAPI.class);
-        Call<Signupmodel1> call = apiService.getUsers();
-        call.enqueue(new Callback<Signupmodel1>() {
-            @Override
-            public void onResponse(Call<Signupmodel1> call, Response<Signupmodel1> response) {
 
-                Signupmodel1 insertFoodResponseModel = response.body();
 
-                //check the status code
-                if(insertFoodResponseModel.getStatus()=="success"){
-                    Toast.makeText(SignupActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    // progressDialog.dismiss();
-                }else{
-                    Toast.makeText(SignupActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    //  progressDialog.dismiss();
-                }
-            }
+    @Override
+    public void onBackPressed () {
 
-            @Override
-            public void onFailure(Call<Signupmodel1> call, Throwable t) {
-                Toast.makeText(SignupActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                editText_mobilenumber.setText(t.getMessage());
-                // progressDialog.dismiss();
-            }
-        });
+        new AlertDialog.Builder(this)
+                .setTitle("Really Exit?")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SignupActivity.super.onBackPressed();
+                        quit();
+                    }
+                }).create().show();
     }
-*/
 
 
 
-
+    public void quit () {
+        Intent start = new Intent(Intent.ACTION_MAIN);
+        start.addCategory(Intent.CATEGORY_HOME);
+        start.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        start.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(start);
     }
+
+
+
+
+}
 

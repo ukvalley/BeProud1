@@ -1,32 +1,27 @@
-package com.ukvalley.umeshkhivasara.beproud;
+package com.ukvalley.umeshkhivasara.beproud.fragments;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
+import com.ukvalley.umeshkhivasara.beproud.adapter.PaginationAdapter;
+import com.ukvalley.umeshkhivasara.beproud.R;
 import com.ukvalley.umeshkhivasara.beproud.interfaces.RetrofitAPI;
-import com.ukvalley.umeshkhivasara.beproud.model.newsmodel.NewsDirectData;
 import com.ukvalley.umeshkhivasara.beproud.model.newsmodel.NewsModel;
 import com.ukvalley.umeshkhivasara.beproud.model.newsmodel.NewsPaginationData;
-import com.ukvalley.umeshkhivasara.beproud.supports.EndlessScrollListener;
 import com.ukvalley.umeshkhivasara.beproud.supports.PaginationScrollListener;
-import com.ukvalley.umeshkhivasara.beproud.supports.RecyclerItemClickListener;
 import com.ukvalley.umeshkhivasara.beproud.supports.SignupClient;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -51,6 +46,8 @@ public class NewsFragment extends Fragment {
     ProgressBar progressBar;
 
     PaginationAdapter adapter;
+
+
 
 
     private List<NewsPaginationData> movieResults;
@@ -94,9 +91,8 @@ public class NewsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_news_list, container, false);
 
 
-        progressBar = (ProgressBar) view.findViewById(R.id.main_progress);
-
-        progressBar.setVisibility(View.GONE);
+        progressBar =  view.findViewById(R.id.main_progress);
+        progressBar.setVisibility(View.VISIBLE);
 
         // Set the adapter
 
@@ -149,68 +145,22 @@ public class NewsFragment extends Fragment {
                 return isLoading;
             }
         });
+
+
         loadFirstPage();
 
-  /*      recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(context, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
-            @Override public void onItemClick(View view, int position) {
-                        // do whatever
-                Intent intent=new Intent(getContext(),NewsDisplay.class);
-                movieResults = new ArrayList<>();
-
-                NewsPaginationData result1 = movieResults.get(position);
-
-                intent.putExtra("keyid",result1.getId());
-                Toast.makeText(getContext(), String.valueOf(position).toString(), Toast.LENGTH_SHORT).show();
-
-                startActivity(intent);
-
-
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position) {
-
-            }
-
-
-                })
-        );
-*/
-        return view;
+         return view;
     }
 
 
-    /*@Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
-        }
-    }*/
 
-   /* @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-*/
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    /*public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
-    }*/
+
+
+
+
+
+
+
 
 
 
@@ -225,8 +175,8 @@ public class NewsFragment extends Fragment {
             @Override
             public void onResponse(Call<NewsModel> call, Response<NewsModel> response) {
 
-
-                Toast.makeText(getContext(), response.body().getStatus(), Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.INVISIBLE);
+              //  Toast.makeText(getContext(), response.body().getStatus(), Toast.LENGTH_SHORT).show();
 
 
 
@@ -248,7 +198,8 @@ public class NewsFragment extends Fragment {
             @Override
             public void onFailure(Call<NewsModel> call, Throwable t) {
 
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.INVISIBLE);
+              //  Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
 

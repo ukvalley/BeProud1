@@ -29,6 +29,9 @@
             android:layout_height="@dimen/activity_margin"
             android:layout_gravity="center"
             android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/colorPrimaryDark"
             android:theme="@style/CircularProgress"/>
 
 
@@ -45,45 +48,10 @@
             android:orientation="vertical"
             >
 
-            <RelativeLayout
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/movie_year"
-                    style="@style/TextAppearance.AppCompat.Caption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:alpha="0.38"
-                    android:layout_alignParentRight="true"
-                    android:gravity="end"
-                    android:drawableLeft="@drawable/date"
-                    android:drawableTint="@color/primary_color"
-                    android:maxLines="1"
-                    android:textStyle="bold"
-                    tools:text="2009 | EN"/>
-
-                <TextView
-                    android:id="@+id/movie_city"
-                    style="@style/TextAppearance.AppCompat.Caption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:alpha="0.38"
-                    android:layout_alignParentLeft="true"
-                    android:gravity="end"
-                    android:drawableLeft="@drawable/city"
-                    android:drawableTint="@color/primary_color"
-                    android:maxLines="1"
-                    android:textStyle="bold"
-                    tools:text="2009 | EN"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+                android:orientation="vertical"
                 android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/movie_title"
@@ -91,28 +59,58 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_margin_content"
-                    android:drawableLeft="@drawable/bonus"
-                    android:drawableTint="@color/primary_color"
+                    android:layout_marginTop="5dp"
+
                     android:layout_marginStart="@dimen/activity_margin_content"
-                    android:maxLines="1"
+                    android:maxLines="2"
                     tools:text="Movie Title"/>
 
+                <RelativeLayout
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/movie_year"
+                        style="@style/TextAppearance.AppCompat.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="end"
+                        android:drawableLeft="@drawable/date"
+                        android:drawableTint="@color/primary_color"
+                        android:maxLines="1"
+                        android:textStyle="bold"
+                        tools:text="2009 | EN"/>
+
+                    <TextView
+                        android:id="@+id/movie_city"
+                        style="@style/TextAppearance.AppCompat.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="end"
+                        android:drawableLeft="@drawable/city"
+                        android:drawableTint="@color/primary_color"
+                        android:maxLines="1"
+                        android:textStyle="bold"
+                        tools:text="2009 | EN"/>
+
+                </RelativeLayout>
 
 
-            </RelativeLayout>
+            </LinearLayout>
             <TextView
                 android:id="@+id/movie_desc"
                 style="@style/TextAppearance.AppCompat.Caption"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_margin_content"
-                android:layout_marginStart="@dimen/activity_margin_content"
-                android:layout_marginTop="@dimen/activity_margin_half"
+                android:layout_height="60dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="24dp"
                 android:layout_marginBottom="@dimen/activity_margin_half"
-                android:drawableLeft="@drawable/date"
-                android:drawableTint="@color/primary_color"
-                android:ellipsize="end"
-                android:maxLines="2"
                 tools:text="Nowadays, user engagement is considered one of the most important metrics for the success of your app"/>
 
         </LinearLayout>

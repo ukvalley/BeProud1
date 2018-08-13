@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.onesignal.OneSignal;
 import com.ukvalley.umeshkhivasara.beproud.supports.SessionManager;
 
 public class SplashActivity extends AppCompatActivity {
@@ -60,6 +61,10 @@ public class SplashActivity extends AppCompatActivity {
                 ;
         countDownTimer.start();
 
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
     }
 }
 

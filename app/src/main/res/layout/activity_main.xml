@@ -18,7 +18,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="22dp"
                 android:gravity="center_horizontal"
-                android:text="Account Login Be Proud"
+                android:text="Register Account"
                 android:textColor="#fff"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -116,10 +116,26 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:singleLine="true"
-                            android:drawableLeft="@drawable/email"
+                            android:drawableLeft="@drawable/lock"
                             android:drawableTint="#FF4081"
                             android:hint="Password"
                             android:inputType="textPassword" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edt_adharno"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:singleLine="true"
+                            android:drawableLeft="@drawable/adhar"
+                            android:drawableTint="#FF4081"
+                            android:hint="Adhar Number"
+                            android:inputType="text" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -190,7 +206,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <TextView
+                        <EditText
                             android:id="@+id/edt_birthdate"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
@@ -199,6 +215,24 @@
                             android:drawableLeft="@drawable/dob"
                             android:drawableTint="#FF4081"
                             android:hint="Birth date"
+                            android:focusable="false"
+                            android:inputType="date" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edt_ann_date"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:singleLine="true"
+                            android:drawableLeft="@drawable/dob"
+                            android:drawableTint="#FF4081"
+                            android:hint="Anniversary date"
+                            android:focusable="false"
                             android:inputType="date" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -247,10 +281,7 @@
                 </LinearLayout>
             </RelativeLayout>
 
-
-
             <ImageButton
-                android:id="@+id/user_profile_photo"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_below="@+id/login_title"
@@ -258,7 +289,16 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/user_profile_image_background"
                 android:elevation="4dp"
-                android:src="@drawable/girl" />
+                android:src="@drawable/usershape" />
         </RelativeLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/signup_pbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        />
+
 </RelativeLayout>
