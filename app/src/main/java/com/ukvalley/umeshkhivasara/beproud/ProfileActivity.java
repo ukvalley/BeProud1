@@ -18,6 +18,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,6 +37,7 @@ import com.ukvalley.umeshkhivasara.beproud.fragments.PersonalDetailFragment;
 import com.ukvalley.umeshkhivasara.beproud.interfaces.RetrofitAPI;
 import com.ukvalley.umeshkhivasara.beproud.model.ImageUpload;
 import com.ukvalley.umeshkhivasara.beproud.model.singleuser.GetSingleUserSupport;
+import com.ukvalley.umeshkhivasara.beproud.model.userstatus.Userstatus;
 import com.ukvalley.umeshkhivasara.beproud.supports.SessionManager;
 import com.ukvalley.umeshkhivasara.beproud.supports.SignupClient;
 
@@ -66,6 +68,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     private static final String BASE_URL_IMG = "http://www.sunclubs.org/test/test_api/public/profile/";
 
+    TextView text_userinactive_profile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,12 +91,18 @@ public class ProfileActivity extends AppCompatActivity {
         profile_city=findViewById(R.id.profile2_city);
         profile_education=findViewById(R.id.profile2_education);
         profile_title=findViewById(R.id.profile2_title);
+        text_userinactive_profile=findViewById(R.id.text_userinactive_profile);
+
+        text_userinactive_profile.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+       
+        text_userinactive_profile.setSelected(true);
+        text_userinactive_profile.setSingleLine(true);
 
         profile_pic=findViewById(R.id.profile_pic);
 
         sessionManager=new SessionManager(ProfileActivity.this);
 
-
+        getUserStatus(sessionManager.getUserDetails());
 
         profile_pic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -294,5 +304,57 @@ public class ProfileActivity extends AppCompatActivity {
     public void onBackPressed() {
         ProfileActivity.this.finish();
         super.onBackPressed();
+    }
+
+
+
+    private void getUserStatus(String email){
+
+
+
+        RetrofitAPI apiService = SignupClient.getClient().create(RetrofitAPI.class);
+        Call<Userstatus> call = apiService.getuserstatus(email);
+        call.enqueue(new Callback<Userstatus>(){
+
+            @Override
+            public void onResponse(Call<Userstatus> call, Response<Userstatus> response) {
+
+
+                String  activeStatus;
+
+
+                activeStatus = response.body().getData().getActiveStatus();
+
+                if (activeStatus.equals("1"))
+                {
+                   // gridView.setVisibility(View.VISIBLE);
+                    text_userinactive_profile.setVisibility(View.GONE);
+
+                }
+                if (activeStatus.equals("0"))
+                {
+                   // gridView.setVisibility(View.GONE);
+
+                   /* Intent intent=new Intent(HomeActivity.this,ProfileActivity.class);
+                    startActivity(intent);
+*/
+                    text_userinactive_profile.setVisibility(View.VISIBLE);
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Userstatus> call, Throwable t) {
+
+
+
+            }
+        });
+
+
+
+
     }
 }

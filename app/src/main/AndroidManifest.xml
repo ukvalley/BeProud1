@@ -45,8 +45,12 @@
             android:name="instamojo.orderauth.url"
             android:value="http://sunclubs.org/test/test_api/access_token.php" />
 
-        <activity android:name=".EventDisplay"
-            android:parentActivityName=".NewsActivity"></activity>
+        <activity
+            android:name=".EventDisplay"
+            android:parentActivityName=".NewsActivity" />
+        <activity android:name=".DownlineActivity"
+            android:parentActivityName=".HomeActivity"
+            ></activity>
     </application>
 
 </manifest>

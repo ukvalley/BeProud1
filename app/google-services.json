@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "376278262116",
+    "firebase_url": "https://be-proud-13015.firebaseio.com",
+    "project_id": "be-proud-13015",
+    "storage_bucket": "be-proud-13015.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376278262116:android:5808ee5da774d821",
+        "android_client_info": {
+          "package_name": "com.ukvalley.umeshkhivasara.beproud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "376278262116-sh06c0g5o7p4q9r1164lkkjtqhn4bu07.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ukvalley.umeshkhivasara.beproud",
+            "certificate_hash": "da1442324a25ab00815d596ffdcb62e632c0af77"
+          }
+        },
+        {
+          "client_id": "376278262116-jhvi510efiqb5mkupbjgejb5oichk36l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADVpr_K2PmP1UymWpD9dz92x5Lra2jtd4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "376278262116-jhvi510efiqb5mkupbjgejb5oichk36l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

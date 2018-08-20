@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#125688</color>
-    <color name="colorPrimaryDark">#125688</color>
+    <color name="colorPrimary">#e61670</color>
+    <color name="colorPrimaryDark">#c10959</color>
     <color name="colorAccent">#bcbcbc</color>
 
     <color name="mdtp_accent_color">#009688</color>

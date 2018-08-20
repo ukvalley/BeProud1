@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="3dp"
+            app:cardPreventCornerOverlap="false">
+            <ProgressBar
+                android:id="@+id/newsdisplaypbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:indeterminateTintMode="src_atop"
+                android:indeterminateTint="@color/colorPrimaryDark"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar"
+                        android:layout_width="@dimen/activity_margin"
+                        android:layout_height="@dimen/activity_margin"
+                        android:layout_gravity="center"
+                        android:layout_centerInParent="true"
+                        android:theme="@style/CircularProgress"/>
+
+                    <ImageView
+                        android:id="@+id/dispalynewsimage"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"/>
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/white"
+                    android:orientation="vertical"
+                    >
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/dispalynewstitle"
+                            style="@style/TextAppearance.AppCompat.Subhead"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_margin_content"
+                            android:layout_marginStart="@dimen/activity_margin_content"
+                            android:layout_marginTop="@dimen/activity_margin_quarter"
+                            tools:text="Movie Title"/>
+
+                        <RelativeLayout
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginRight="24dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/displaynewsdate"
+                                style="@style/TextAppearance.AppCompat.Caption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:gravity="end"
+                                android:drawableLeft="@drawable/date"
+                                android:drawableTint="@color/primary_color"
+                                android:maxLines="1"
+                                android:textStyle="bold"
+                                tools:text="2009 | EN"/>
+
+                            <TextView
+                                android:id="@+id/displaynewscity"
+                                style="@style/TextAppearance.AppCompat.Caption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:layout_alignParentLeft="true"
+                                android:gravity="end"
+                                android:drawableLeft="@drawable/city"
+                                android:drawableTint="@color/primary_color"
+                                android:maxLines="1"
+                                android:textStyle="bold"
+                                tools:text="2009 | EN"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/displaynewsdata"
+                        style="@style/TextAppearance.AppCompat.Caption"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginTop="@dimen/activity_margin_half"
+                        android:layout_marginBottom="@dimen/activity_margin_half"
+                        android:drawableTint="@color/primary_color"
+                        android:ellipsize="end"
+                        tools:text="Nowadays, user engagement is considered one of the most important metrics for the success of your app"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </ScrollView>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_video_upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryDark"
+        android:text="Upload Video"
+        android:textColor="#FFFFFF"
+
+        />
+
+</RelativeLayout>

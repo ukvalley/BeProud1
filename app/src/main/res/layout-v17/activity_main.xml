@@ -170,6 +170,23 @@
                             android:inputType="text" />
                     </android.support.design.widget.TextInputLayout>
 
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edt_parentid"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:singleLine="true"
+                            android:drawableLeft="@drawable/user"
+                            android:drawableTint="#FF4081"
+                            android:hint="Parent ID"
+                            android:inputType="text" />
+                    </android.support.design.widget.TextInputLayout>
+
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -236,6 +253,29 @@
                             android:inputType="date" />
                     </android.support.design.widget.TextInputLayout>
 
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/terms_condition_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            />
+                        <TextView
+                            android:id="@+id/txt_terms"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_height="wrap_content"
+                            android:text="I have read Terms and conditions"
+                            />
+
+                    </LinearLayout>
+
                     <TextView
                         android:id="@+id/edtalreadyregister"
                         android:layout_width="fill_parent"
@@ -280,8 +320,6 @@
 
                 </LinearLayout>
             </RelativeLayout>
-
-
 
             <ImageButton
                 android:layout_width="100dp"

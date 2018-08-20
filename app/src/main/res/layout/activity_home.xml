@@ -63,7 +63,7 @@
             android:padding="5dp"
             android:layout_margin="10dp"
             android:visibility="invisible"
-            android:text="Your Account is not validated by the Admin."
+            android:text="Your Account is not validated by admin click here to edit profile"
             />
 
     <GridView

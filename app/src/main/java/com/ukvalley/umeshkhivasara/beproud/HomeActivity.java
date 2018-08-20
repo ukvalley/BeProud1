@@ -71,8 +71,8 @@ public class HomeActivity extends AppCompatActivity {
             ,R.drawable.slider5,R.drawable.slider6};
 
 
-    String [] menu_tilte={"Profile","News","Share","VBD Stores","Feedback","Company","Product","Downline","Point","Bonus","Training","Contact","Voucher","Notification","Funds","Consistency","VBD App","VBD Facebook"};
-    int [] icons= {R.drawable.profile,R.drawable.news,R.drawable.share,R.drawable.stores,R.drawable.feedback,R.drawable.company,R.drawable.product,R.drawable.downline,R.drawable.point,R.drawable.bonus,R.drawable.training,R.drawable.phone,R.drawable.voucher,R.drawable.notification,R.drawable.fund,R.drawable.consistency,R.drawable.letterb,R.drawable.fb};
+    String [] menu_tilte={"Profile","News","Share","Downline","VBD Stores","Feedback","Company","Product","Point","Bonus","Training","Contact","Voucher","Notification","Funds","Consistency","VBD App","VBD Facebook"};
+    int [] icons= {R.drawable.profile,R.drawable.news,R.drawable.share,R.drawable.downline,R.drawable.stores,R.drawable.feedback,R.drawable.company,R.drawable.product,R.drawable.point,R.drawable.bonus,R.drawable.training,R.drawable.phone,R.drawable.voucher,R.drawable.notification,R.drawable.fund,R.drawable.consistency,R.drawable.letterb,R.drawable.fb};
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +94,13 @@ public class HomeActivity extends AppCompatActivity {
         gridView.setAdapter(myadapter);
         text_userinactive=findViewById(R.id.text_userinactive);
 
-
+        text_userinactive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomeActivity.this,ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -113,6 +119,11 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     if (i == 1) {
                         Intent intent = new Intent(HomeActivity.this, NewsActivity.class);
+                        startActivity(intent);
+                    }
+                    if (i==3){
+
+                        Intent intent=new Intent(HomeActivity.this,DownlineActivity.class);
                         startActivity(intent);
                     }
                 }
@@ -191,12 +202,12 @@ public class HomeActivity extends AppCompatActivity {
 
                         mInvitationUrl = shortDynamicLink.getShortLink();
 
-                        String subject = String.format("%s wants you to play MyExampleGame!", email);
+                       /* String subject = String.format("%s has invited you to install Be Proud Application", email);
                         String invitationLink = mInvitationUrl.toString();
-                        String msg = "Let's play MyExampleGame together! Use my referrer link: "
+                        String msg = "Let's join together! Use my referrer link: "
                                 + invitationLink;
                         String msgHtml = String.format("<p>Let's play MyExampleGame together! Use my "
-                                + "<a href=\"%s\">referrer link</a>!</p>", invitationLink);
+                                + "<a href=\"%s\">referrer link</a>!</p>", invitationLink);*/
 
                      /*   Intent intent = new Intent(Intent.ACTION_SENDTO);
                       //  intent.setData(Uri.parse("mailto:")); // only email apps should handle this
@@ -371,7 +382,10 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     gridView.setVisibility(View.GONE);
 
-                   text_userinactive.setVisibility(View.VISIBLE);
+                    Intent intent=new Intent(HomeActivity.this,ProfileActivity.class);
+                    startActivity(intent);
+
+                    text_userinactive.setVisibility(View.VISIBLE);
                 }
 
 

@@ -1,5 +1,8 @@
 package com.ukvalley.umeshkhivasara.beproud;
 
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.Activity;
@@ -16,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -42,7 +46,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
 
     TextView textView_alreadyregister;
     EditText editText_birthdate,editText_ann_date;
-    EditText editText_adharno, editText_username,editText_mobilenumber,editText_city,editText_email,editText_education,editText_profession,editText_brandname,editText_dream,editText_pass;
+    EditText editText_adharno, editText_username,editText_mobilenumber,editText_city,editText_email,editText_education,editText_profession,editText_brandname,editText_dream,editText_pass,edt_parent_id;
     private DatePickerDialog dpd;
     private DatePickerDialog dpd1;
     Button button_signup;
@@ -53,6 +57,9 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
 
     public static final int FLAG_BIRTH = 0;
     public static final int FLAG_ANNIVERSARY = 1;
+
+    TextView textView_terms;
+    CheckBox checkBox_terms;
 
     private void callInstamojoPay(String email, String phone, String amount, String purpose, String buyername) {
         final Activity activity = this;
@@ -66,8 +73,8 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
             pay.put("purpose", purpose);
             pay.put("amount", amount);
             pay.put("name", buyername);
-       pay.put("send_sms", true);
-      pay.put("send_email", true);
+            pay.put("send_sms", true);
+            pay.put("send_email", true);
  } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -137,7 +144,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
 
 
 
-    editText_birthdate = findViewById(R.id.edt_birthdate);
+        editText_birthdate = findViewById(R.id.edt_birthdate);
         editText_username=findViewById(R.id.edt_name);
         editText_mobilenumber=findViewById(R.id.edt_mobile);
         editText_city=findViewById(R.id.edt_city);
@@ -148,6 +155,11 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         editText_dream=findViewById(R.id.edt_dream);
         editText_pass=findViewById(R.id.edt_pass);
         editText_adharno=findViewById(R.id.edt_adharno);
+
+        checkBox_terms=findViewById(R.id.terms_condition_check);
+        textView_terms=findViewById(R.id.txt_terms);
+
+        edt_parent_id=findViewById(R.id.edt_parentid);
 
         progressBar_signup=findViewById(R.id.signup_pbar);
         
@@ -169,7 +181,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         button_makepayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                callInstamojoPay("umsh98904@gmail.com","9890437811","100","Registreation","Umesh");
+                callInstamojoPay("umsh98904@gmail.com","9890437811","10","Registreation","Umesh");
             }
         });
 
@@ -234,6 +246,29 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
             }
         });
 
+        textView_terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new AlertDialog.Builder(SignupActivity.this)
+                        .setTitle("Terms And Condition")
+                        .setMessage("We reserve the right to alter these terms and condition at any time.\n" +
+                                "All the decision taken by Be Proud management will be accepted by you.\n" +
+                                "Please Take care of your belongings BE PROUD WOMEN will not be responsive for any loses\n" +
+                                "Do not distribute any printed material for marketing of any kind in BE PROUD WOMEN event without management Notice\n" +
+                                "Do not conduct an unauthorized event, hold demonstrations of unauthorized public gatherings and make speeches in behalf of BE PROUD WOMEN\n" +
+                                "BE PROUD WOMEN will charge Rs.200/- per person for each Kitty\n" +
+                                "Payments must be made within 2 days.\n" +
+                                "Yearly Registration Fees Rs. 1100/-\n" +
+                                "From Feb. 2017 to Dec. 2017\n" +
+                                "We can remove any member if they create infringes copyright\n" +
+                                "Final discussion taken by founder will be accepted to all.")
+                        .setNegativeButton("OK", null)
+                        .create().show();
+            }
+
+
+        });
 
         button_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -251,17 +286,21 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
                 String str_dream=  editText_dream.getText().toString();
                 String str_birthdate= editText_birthdate.getText().toString();
                 String str_pass=editText_pass.getText().toString();
-
+                String str_parent_id=edt_parent_id.getText().toString();
                 String str_ann_date=editText_ann_date.getText().toString();
-
                 String str_adharno=editText_adharno.getText().toString();
 
 
 
 
-
-                insertData(str_name,str_mobile,str_city,str_email,str_pass,str_adharno,str_education,str_profession,str_brandname,str_dream,str_birthdate,str_ann_date);
-                progressBar_signup.setVisibility(View.VISIBLE);
+                if (checkBox_terms.isChecked()) {
+                    insertData(str_name, str_mobile, str_city, str_email, str_pass, str_adharno, str_education, str_profession, str_brandname, str_dream, str_birthdate, str_ann_date, str_parent_id);
+                    progressBar_signup.setVisibility(View.VISIBLE);
+                }
+                else 
+                {
+                    Toast.makeText(SignupActivity.this, "Please accept Terms and Condition", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -292,9 +331,9 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
 
 
 
-    private void insertData(String username, String mobile, String city, final String email, String password, String str_adharno, String education, String profession, String brandname, String dream, String dob, String ann_date){
+    private void insertData(String username, String mobile, String city, final String email, String password, String str_adharno, String education, final String profession, String brandname, String dream, String dob, String ann_date, String str_parent_id){
         RetrofitAPI apiService = SignupClient.getClient().create(RetrofitAPI.class);
-        Call<SignupResponsemodel> call = apiService.insertuser(username,mobile,city,email,password, str_adharno, education,profession,brandname,dream,dob,ann_date);
+        Call<SignupResponsemodel> call = apiService.insertuser(username,mobile,city,email,password, str_adharno, education,profession,brandname,dream,dob,ann_date,str_parent_id);
         call.enqueue(new Callback<SignupResponsemodel>() {
             @Override
             public void onResponse(Call<SignupResponsemodel> call, Response<SignupResponsemodel> response) {
@@ -308,12 +347,16 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
                     button_makepayment.setVisibility(View.VISIBLE);
 
                 }else{
+                    progressBar_signup.setVisibility(View.INVISIBLE);
+                    Toast.makeText(SignupActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             }
 
             @Override
             public void onFailure(Call<SignupResponsemodel> call, Throwable t) {
+                progressBar_signup.setVisibility(View.INVISIBLE);
+                Toast.makeText(SignupActivity.this, "Something went wrong "+t.getCause(), Toast.LENGTH_SHORT).show();
             }
         });
     }

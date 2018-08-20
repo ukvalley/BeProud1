@@ -5,6 +5,7 @@ import com.ukvalley.umeshkhivasara.beproud.model.UpdateModel;
 import com.ukvalley.umeshkhivasara.beproud.model.SignupResponsemodel;
 import com.ukvalley.umeshkhivasara.beproud.model.Signupmodel;
 import com.ukvalley.umeshkhivasara.beproud.model.bankdetail.UserBankInformation;
+import com.ukvalley.umeshkhivasara.beproud.model.child.child;
 import com.ukvalley.umeshkhivasara.beproud.model.contactdetail.UserContactInformation;
 import com.ukvalley.umeshkhivasara.beproud.model.events.EventsModel;
 import com.ukvalley.umeshkhivasara.beproud.model.newsmodel.NewsModel;
@@ -30,7 +31,7 @@ public interface RetrofitAPI {
     @FormUrlEncoded
     @POST("register")
     Call<SignupResponsemodel> insertuser(@Field("user_name") String username, @Field("mobile") String mobile,
-                                         @Field("city") String city,@Field("email") String email, @Field("password") String password,@Field("adharno") String str_adharno, @Field("education") String education, @Field("profession") String profession, @Field("brandname") String brandname, @Field("dream") String dream, @Field("dob") String dob, @Field("anniversary_date") String ann_date);
+                                         @Field("city") String city,@Field("email") String email, @Field("password") String password,@Field("adharno") String str_adharno, @Field("education") String education, @Field("profession") String profession, @Field("brandname") String brandname, @Field("dream") String dream, @Field("dob") String dob, @Field("anniversary_date") String ann_date, @Field("parent_id") String str_parent_id);
 
     @GET("user_list")
     Call<Signupmodel> getUsers();
@@ -69,6 +70,9 @@ public interface RetrofitAPI {
 
     @GET("getuserstatus")
     Call<Userstatus> getuserstatus (@Query("email") String email);
+
+    @GET("child_count")
+    Call<child> getchilds (@Query("email") String email);
 
 
 

@@ -25,7 +25,20 @@
 
 
 
-
+        <TextView
+            android:id="@+id/text_userinactive_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#ff8c84"
+            android:textColor="#bc0e0e"
+            android:ellipsize="marquee"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:visibility="invisible"
+            android:text="Please Fill all details correct then account will be validated by the Admin."
+            />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -109,6 +122,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
+
+
+
+
     </LinearLayout>
 
 
