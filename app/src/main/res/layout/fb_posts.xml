@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="3dp"
+            app:cardPreventCornerOverlap="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Umesh Jain"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:id="@+id/post_creater"
+                        />
+                    <ProgressBar
+                        android:id="@+id/movie_progress"
+                        style="@style/Widget.AppCompat.ProgressBar"
+                        android:layout_width="@dimen/activity_margin"
+                        android:layout_height="@dimen/activity_margin"
+                        android:layout_gravity="center"
+                        android:layout_centerInParent="true"
+                        android:indeterminate="true"
+                        android:indeterminateTintMode="src_atop"
+                        android:indeterminateTint="@color/colorPrimaryDark"
+                        android:theme="@style/CircularProgress"/>
+
+
+                    <ImageView
+                        android:id="@+id/post_image"
+                        android:layout_below="@id/post_creater"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"/>
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+
+
+
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/post_description"
+                        style="@style/TextAppearance.AppCompat.Caption"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginBottom="@dimen/activity_margin_half"
+                        tools:text="Nowadays, user engagement is considered one of the most important metrics for the success of your app"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <Button
+                        android:id="@+id/like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Like"
+                        android:textColor="#ffffff"
+                        android:layout_margin="5dp"
+
+                        android:background="@color/colorPrimaryDark"
+                        />
+                    <Button
+                        android:id="@+id/comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="comment"
+                        android:textColor="#ffffff"
+                        android:layout_margin="5dp"
+                        android:background="@color/colorPrimaryDark"
+                        />
+                    <Button
+                        android:id="@+id/share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="share"
+                        android:textColor="#ffffff"
+                        android:layout_margin="5dp"
+                        android:background="@color/colorPrimaryDark"
+                        />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

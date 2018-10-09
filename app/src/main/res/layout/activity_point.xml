@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+
+    android:layout_height="match_parent"
+    tools:context=".PointActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_point"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TableLayout
+        android:layout_gravity="center"
+    android:id="@+id/tabla_cuerpo"
+        android:layout_marginTop="30dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:text="Level"
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text="Child Count"
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text="Commision"
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text="Paid"
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text="Unpaid"
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:text="Total"
+            />
+    </TableRow>
+   <TableRow
+       android:layout_width="match_parent"
+
+       android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:background="@drawable/cell_shape"
+        android:padding="10dp"
+        android:text="Level 1:"
+        />
+    <TextView
+        android:id="@+id/tv_lc1"
+        android:layout_width="wrap_content"
+        android:textSize="12sp"
+        android:layout_height="wrap_content"
+       android:background="@drawable/cell_shape"
+                android:padding="10dp"
+
+        />
+       <TextView
+            android:id="@+id/comm_1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+          android:background="@drawable/cell_shape"
+                android:padding="10dp"
+           android:textSize="12sp"
+           android:text=""
+           />
+
+       <TextView
+
+           android:id="@+id/paid_1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+           android:padding="10dp"
+           android:textSize="12sp"
+           android:text=""
+           />
+
+       <TextView
+           android:id="@+id/unpaid_1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+           android:padding="10dp"
+           android:textSize="12sp"
+           android:text=""
+           />
+
+       <TextView
+           android:id="@+id/total_1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+           android:padding="10dp"
+           android:textSize="12sp"
+           android:text=""
+           />
+
+   </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+
+
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level 2:"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:id="@+id/tv_lc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+
+            />
+        <TextView
+            android:id="@+id/comm_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+
+            android:id="@+id/paid_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/unpaid_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/total_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+            android:text="Level 3:"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            />
+        <TextView
+            android:id="@+id/tv_lc3"
+            android:layout_width="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:id="@+id/comm_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+
+            android:id="@+id/paid_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/unpaid_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/total_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+            android:text="Level 4:"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            />
+        <TextView
+            android:id="@+id/tv_lc4"
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+
+            />
+        <TextView
+            android:id="@+id/comm_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+
+            android:id="@+id/paid_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/unpaid_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/total_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+    </TableRow>
+        <TableRow
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+
+        android:text="Level 5:"
+        android:background="@drawable/cell_shape"
+        android:padding="10dp"
+        />
+    <TextView
+        android:id="@+id/tv_lc5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+       android:background="@drawable/cell_shape"
+                android:padding="10dp"
+        />
+            <TextView
+                android:id="@+id/comm_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+
+                android:id="@+id/paid_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+                android:id="@+id/unpaid_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+                android:id="@+id/total_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+</TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="Level 6:"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+
+            />
+        <TextView
+            android:id="@+id/tv_lc6"
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+
+            />
+        <TextView
+            android:id="@+id/comm_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+
+            android:id="@+id/paid_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/unpaid_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/total_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="Level 7:"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            />
+        <TextView
+            android:id="@+id/tv_lc7"
+            android:layout_width="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:id="@+id/comm_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+
+            android:id="@+id/paid_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/unpaid_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/total_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:background="@drawable/cell_shape"
+                android:padding="10dp"
+            android:textSize="12sp"
+            android:text=""
+            />
+    </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+
+                android:text="Level 8:"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                />
+            <TextView
+                android:id="@+id/tv_lc8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+               android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                />
+            <TextView
+                android:id="@+id/comm_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+
+                android:id="@+id/paid_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+                android:id="@+id/unpaid_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+                android:id="@+id/total_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Level 9:"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+
+                />
+            <TextView
+                android:id="@+id/tv_lc9"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+               android:background="@drawable/cell_shape"
+                android:padding="10dp"
+
+                />
+            <TextView
+                android:id="@+id/comm_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+
+                android:id="@+id/paid_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+                android:id="@+id/unpaid_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+                android:id="@+id/total_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Level 10:"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                />
+            <TextView
+                android:id="@+id/tv_lc10"
+                android:layout_width="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+
+                />
+            <TextView
+                android:id="@+id/comm_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+
+                android:id="@+id/paid_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+                android:id="@+id/unpaid_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+
+            <TextView
+                android:id="@+id/total_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Total"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                />
+            <TextView
+                android:id="@+id/user_count"
+                android:layout_width="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+
+                />
+            <TextView
+               
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/total_paid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/total_unpaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/total_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:text=""
+                />
+        </TableRow>
+        
+    </TableLayout>
+
+</LinearLayout>
