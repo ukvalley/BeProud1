@@ -8,9 +8,13 @@ import com.ukvalley.umeshkhivasara.beproud.model.bankdetail.UserBankInformation;
 import com.ukvalley.umeshkhivasara.beproud.model.child.child;
 import com.ukvalley.umeshkhivasara.beproud.model.contactdetail.UserContactInformation;
 import com.ukvalley.umeshkhivasara.beproud.model.events.EventsModel;
+import com.ukvalley.umeshkhivasara.beproud.model.level_income.LevelIncome;
 import com.ukvalley.umeshkhivasara.beproud.model.newsmodel.NewsModel;
+import com.ukvalley.umeshkhivasara.beproud.model.notification.Notification;
+import com.ukvalley.umeshkhivasara.beproud.model.point_package.Beproud;
 import com.ukvalley.umeshkhivasara.beproud.model.singlenews.SingleNewsModel;
 import com.ukvalley.umeshkhivasara.beproud.model.singleuser.GetSingleUserSupport;
+import com.ukvalley.umeshkhivasara.beproud.model.socialmedia.SocialmediaAllpost;
 import com.ukvalley.umeshkhivasara.beproud.model.userpersonaldetail.UserPersonalInformation;
 import com.ukvalley.umeshkhivasara.beproud.model.userstatus.Userstatus;
 
@@ -22,7 +26,6 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -47,6 +50,9 @@ public interface RetrofitAPI {
 
     @GET("news")
     Call<NewsModel> getAllnews(@Query("page")int pagenumber);
+
+    @GET("get_notification")
+    Call<Notification> getAllnotification(@Query("page")int pagenumber);
 
     @GET("singlenews")
     Call<SingleNewsModel> GetSingleNews (@Query("id")String id);
@@ -74,7 +80,12 @@ public interface RetrofitAPI {
     @GET("child_count")
     Call<child> getchilds (@Query("email") String email);
 
+    @GET("get_post_all")
+    Call<SocialmediaAllpost> getsocialpost (@Query("page")String pagenumber);
 
+
+    @GET("level_income")
+    Call<LevelIncome> getpoints (@Query("id")String email);
 
 
     @GET("edit_contact/{email}")

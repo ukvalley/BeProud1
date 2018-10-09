@@ -14,23 +14,40 @@ import android.widget.Toast;
 
 import com.ukvalley.umeshkhivasara.beproud.interfaces.RetrofitAPI;
 import com.ukvalley.umeshkhivasara.beproud.model.SignupResponsemodel;
+import com.ukvalley.umeshkhivasara.beproud.supports.Config;
 import com.ukvalley.umeshkhivasara.beproud.supports.SessionManager;
 import com.ukvalley.umeshkhivasara.beproud.supports.SignupClient;
+
+
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayer.Provider;
+import com.google.android.youtube.player.YouTubePlayerView;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SigninActivity extends AppCompatActivity {
+public class SigninActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
     SessionManager sessionManager;
 
     EditText  editText_emaillogin, editText_passwordlogin;
     TextView textView_notregister;
 
+    private static final int RECOVERY_REQUEST = 1;
+    private YouTubePlayerView youTubeView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+
+        youTubeView =  findViewById(R.id.youtube_player);
+        youTubeView.initialize(Config.YOUTUBE_API_KEY, this);
+
+
 
         editText_emaillogin=findViewById(R.id.edtemail);
         editText_passwordlogin=findViewById(R.id.edtpass);
@@ -72,6 +89,8 @@ public class SigninActivity extends AppCompatActivity {
                 SignupResponsemodel insertFoodResponseModel = response.body();
 
                 //check the status code
+                Toast.makeText(SigninActivity.this, response.toString(), Toast.LENGTH_SHORT).show();response.body().toString();
+
                 if(insertFoodResponseModel.getStatus().equals("success")){
                     Toast.makeText(SigninActivity.this, response.body().getMessage()+""+response.body().getStatus(), Toast.LENGTH_SHORT).show();
                     sessionManager.createLoginSession(email);
@@ -93,6 +112,17 @@ public class SigninActivity extends AppCompatActivity {
                 // progressDialog.dismiss();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == RECOVERY_REQUEST) {
+            // Retry initialization if user performed a recovery action
+            getYouTubePlayerProvider().initialize(Config.YOUTUBE_API_KEY, this);
+        }
+    }
+    protected Provider getYouTubePlayerProvider() {
+        return youTubeView;
     }
 
     @Override
@@ -121,4 +151,20 @@ public class SigninActivity extends AppCompatActivity {
         startActivity(start);
     }
 
+    @Override
+    public void onInitializationSuccess(Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
+        if (!wasRestored) {
+            youTubePlayer.cueVideo("bMrSTjzfZrk"); // Plays https://www.youtube.com/watch?v=bMrSTjzfZrk
+        }
+    }
+
+    @Override
+    public void onInitializationFailure(Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+        if (youTubeInitializationResult.isUserRecoverableError()) {
+            youTubeInitializationResult.getErrorDialog(SigninActivity.this, RECOVERY_REQUEST).show();
+        } else {
+
+            Toast.makeText(SigninActivity.this, youTubeInitializationResult.toString(), Toast.LENGTH_LONG).show();
+        }
+    }
 }

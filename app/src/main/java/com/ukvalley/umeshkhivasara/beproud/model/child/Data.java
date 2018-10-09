@@ -10,6 +10,16 @@ public class Data {
     @Expose
     private Integer count;
 
+    public Integer getUnit() {
+        return unit;
+    }
+
+    public void setUnit(Integer unit) {
+        this.unit = unit;
+    }
+
+    private Integer unit;
+
     public Integer getCount() {
         return count;
     }

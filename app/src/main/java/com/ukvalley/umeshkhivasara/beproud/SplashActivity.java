@@ -12,6 +12,8 @@ import com.ukvalley.umeshkhivasara.beproud.supports.SessionManager;
 
 public class SplashActivity extends AppCompatActivity {
 
+    private static boolean activityStarted;
+
     private ImageView advertise;
     SessionManager sessionManager;
 
@@ -19,6 +21,15 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        if (   activityStarted
+                && getIntent() != null
+                && (getIntent().getFlags() & Intent.FLAG_ACTIVITY_REORDER_TO_FRONT) != 0) {
+            finish();
+            return;
+        }
+
+        activityStarted = true;
 
         sessionManager = new SessionManager(this);
       //  ActionBar actionBar = getSupportActionBar();

@@ -48,7 +48,33 @@
         <activity
             android:name=".EventDisplay"
             android:parentActivityName=".NewsActivity" />
-        <activity android:name=".DownlineActivity"
+        <activity
+            android:name=".DownlineActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".SocialMedia"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".ProductActivity"
+            android:parentActivityName=".HomeActivity" />
+
+        <service
+            android:name=".supports.NotificationExtenderBareBonesExample"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+            <intent-filter>
+                <action android:name="com.onesignal.NotificationExtender" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".PointActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".NotificationActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity android:name=".TrainingActivity"
+            android:screenOrientation="landscape"
             android:parentActivityName=".HomeActivity"
             ></activity>
     </application>

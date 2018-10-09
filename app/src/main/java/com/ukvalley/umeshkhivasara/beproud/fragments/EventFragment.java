@@ -110,7 +110,6 @@ public class EventFragment extends Fragment {
 
 
 
-
         adapter=new EventPaginationAdapter(context);
         recyclerView.setAdapter(adapter);
 

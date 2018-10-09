@@ -90,6 +90,7 @@ public class HomeActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         gridView = findViewById(R.id.gridview);
+
         CustomGridAdapter myadapter=new CustomGridAdapter(HomeActivity.this,menu_tilte);
         gridView.setAdapter(myadapter);
         text_userinactive=findViewById(R.id.text_userinactive);
@@ -126,6 +127,33 @@ public class HomeActivity extends AppCompatActivity {
                         Intent intent=new Intent(HomeActivity.this,DownlineActivity.class);
                         startActivity(intent);
                     }
+                    if (i==17)
+                    {
+                        Intent intent=new Intent(HomeActivity.this,SocialMedia.class);
+                        startActivity(intent);
+                    }
+                    if (i==4)
+                    {
+                        Intent intent=new Intent(HomeActivity.this,ProductActivity.class);
+                      //  startActivity(intent);
+                    }
+                if (i==8)
+                {
+                    Intent intent=new Intent(HomeActivity.this,PointActivity.class);
+                    startActivity(intent);
+                }
+
+                if (i==13)
+                {
+                    Intent intent=new Intent(HomeActivity.this,NotificationActivity.class);
+                    startActivity(intent);
+                }
+
+                if (i==10)
+                {
+                    Intent intent=new Intent(HomeActivity.this,TrainingActivity.class);
+                    startActivity(intent);
+                }
                 }
             });
         }

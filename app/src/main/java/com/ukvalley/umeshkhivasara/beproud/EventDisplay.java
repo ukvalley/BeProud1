@@ -30,6 +30,8 @@ import com.ukvalley.umeshkhivasara.beproud.supports.SessionManager;
 import com.ukvalley.umeshkhivasara.beproud.supports.SignupClient;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -46,6 +48,11 @@ public class EventDisplay extends AppCompatActivity {
     SessionManager sessionManager;
     ProgressBar progressBarnewsdisply;
     String eventid;
+
+    ArrayList<String> elephantList;
+    int index = 0;
+
+    ImageView imageViewleft_arrow,imageView_right_arrow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +73,9 @@ public class EventDisplay extends AppCompatActivity {
         newstilte=findViewById(R.id.dispalynewstitle);
         newsimage=findViewById(R.id.dispalynewsimage);
 
+        imageView_right_arrow=findViewById(R.id.right_arrow_event);
+        imageViewleft_arrow=findViewById(R.id.left_arrow_event);
+
         Button button_upload_video=findViewById(R.id.btn_video_upload);
         button_upload_video.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +90,18 @@ public class EventDisplay extends AppCompatActivity {
         });
 
         FetchSinglenews(id);
+
+        imageView_right_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(index <elephantList.size()){
+                    ChangeImage(elephantList.get(index));
+                    index++;
+                }
+                else index =0;
+
+            }
+        });
     }
 
 
@@ -99,11 +121,20 @@ public class EventDisplay extends AppCompatActivity {
                 newsdate.setText(response.body().getData().getDate());
                 newstilte.setText(response.body().getData().getTitle());
 
+                String image_urls= response.body().getData().getImage();
 
+                elephantList = new ArrayList<>(Arrays.asList(image_urls.split(",")));
+
+
+                if (elephantList.size()>1)
+                {
+                    imageView_right_arrow.setVisibility(View.VISIBLE);
+                    // imageViewleft_arrow.setVisibility(View.VISIBLE);
+                }
 
                 Glide
                         .with(EventDisplay.this)
-                        .load(BASE_URL_IMG + response.body().getData().getImage())
+                        .load(BASE_URL_IMG + elephantList.get(0))
                         .listener(new RequestListener<String, GlideDrawable>() {
                             @Override
                             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -231,6 +262,31 @@ public class EventDisplay extends AppCompatActivity {
 
 
 
+    public void ChangeImage(String image_name)
+    {
+        Glide
+                .with(EventDisplay.this)
+                .load(BASE_URL_IMG + image_name)
+                .listener(new RequestListener<String, GlideDrawable>() {
+                    @Override
+                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        // TODO: 08/11/16 handle failure
+                        // movieVH.mProgress.setVisibility(View.GONE);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        // image ready, hide progress now
+                        // movieVH.mProgress.setVisibility(View.GONE);
+                        return false;   // return false if you want Glide to handle everything else.
+                    }
+                })
+                .diskCacheStrategy(DiskCacheStrategy.ALL)   // cache both original & resized image
+                .fitCenter()
+                .crossFade()
+                .into(newsimage);
+    }
 
 
 }

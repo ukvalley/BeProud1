@@ -64,6 +64,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"/>
 
+                <ImageView
+                    android:id="@+id/left_arrow"
+                    android:src="@drawable/ic_chevron_left_black_24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"
+                    android:layout_marginLeft="10dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/right_arrow"
+                    android:src="@drawable/ic_chevron_right_black_24dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_centerVertical="true"
+                    android:tint="@color/colorPrimary"
+                    android:visibility="invisible"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    />
+
             </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -132,8 +154,8 @@
                     style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
                     android:layout_marginTop="@dimen/activity_margin_half"
                     android:layout_marginBottom="@dimen/activity_margin_half"
                     android:drawableTint="@color/primary_color"

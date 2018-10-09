@@ -9,7 +9,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SignupClient {
-    public static final String URL      = "http://sunclubs.org/test/test_api/";
+   // public static final String URL     = "https://132.148.16.199/beproudadmin/";
+    public static final String URL     = "http://sunclubs.org/test/test_api/";
     public static Retrofit RETROFIT = null;
 
     public static Retrofit getClient() {

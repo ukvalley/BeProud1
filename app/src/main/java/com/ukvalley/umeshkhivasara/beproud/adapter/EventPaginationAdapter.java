@@ -1,6 +1,7 @@
 package com.ukvalley.umeshkhivasara.beproud.adapter;
 
-import android.content.Context;
+
+import com.ukvalley.umeshkhivasara.beproud.model.events.EventsModel;import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -21,10 +22,10 @@ import com.ukvalley.umeshkhivasara.beproud.NewsDisplay;
 import com.ukvalley.umeshkhivasara.beproud.R;
 import com.ukvalley.umeshkhivasara.beproud.model.Datum;
 import com.ukvalley.umeshkhivasara.beproud.model.events.Datum_;
-import com.ukvalley.umeshkhivasara.beproud.model.events.EventsModel;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -128,9 +129,12 @@ public class EventPaginationAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                  * Learn more about Glide here:
                  * <a href="http://blog.grafixartist.com/image-gallery-app-android-studio-1-4-glide/" />
                  */
+
+                String image_urls= result.getImage();
+                ArrayList<String> elephantList = new ArrayList<> (Arrays.asList(image_urls.split(",")));
              Glide
                         .with(context)
-                        .load(BASE_URL_IMG + result.getImage())
+                        .load(BASE_URL_IMG + elephantList.get(0))
                         .listener(new RequestListener<String, GlideDrawable>() {
                             @Override
                             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {

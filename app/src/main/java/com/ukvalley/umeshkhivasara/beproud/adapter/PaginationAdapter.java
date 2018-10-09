@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,10 +20,19 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.ukvalley.umeshkhivasara.beproud.NewsDisplay;
 import com.ukvalley.umeshkhivasara.beproud.R;
+import com.ukvalley.umeshkhivasara.beproud.SignupActivity;
+import com.ukvalley.umeshkhivasara.beproud.interfaces.RetrofitAPI;
+import com.ukvalley.umeshkhivasara.beproud.model.SignupResponsemodel;
 import com.ukvalley.umeshkhivasara.beproud.model.newsmodel.NewsPaginationData;
+import com.ukvalley.umeshkhivasara.beproud.supports.SignupClient;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Suleiman on 19/10/16.
@@ -91,6 +101,8 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             case ITEM:
                 final MovieVH movieVH = (MovieVH) holder;
 
+
+
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -101,6 +113,21 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     }
                 });
 
+            /*    movieVH.like.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+
+                    }
+                });*/
+
+               /* movieVH.comment.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+*/
                 movieVH.mMovieTitle.setText(result.getTitle());
                 movieVH.mMovieTitle.setClickable(true);
                 movieVH.mMovieTitle.setOnClickListener(new View.OnClickListener() {
@@ -125,9 +152,11 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                  * Learn more about Glide here:
                  * <a href="http://blog.grafixartist.com/image-gallery-app-android-studio-1-4-glide/" />
                  */
+                String image_urls= result.getImage();
+                ArrayList<String> elephantList = new ArrayList<> (Arrays.asList(image_urls.split(",")));
              Glide
                         .with(context)
-                        .load(BASE_URL_IMG + result.getImage())
+                        .load(BASE_URL_IMG + elephantList.get(0))
                         .listener(new RequestListener<String, GlideDrawable>() {
                             @Override
                             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -236,6 +265,7 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         private TextView mYear; // displays "year | language"
         private ImageView mPosterImg;
         private  TextView mcity;
+       // private Button like,comment;
         private ProgressBar mProgress;
 
         public MovieVH(View itemView) {
@@ -247,6 +277,8 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             mPosterImg = (ImageView) itemView.findViewById(R.id.movie_poster);
             mProgress = (ProgressBar) itemView.findViewById(R.id.movie_progress);
             mcity=itemView.findViewById(R.id.movie_city);
+           /* like=itemView.findViewById(R.id.news_like);
+            comment=itemView.findViewById(R.id.news_comment);*/
 
         }
     }
@@ -258,6 +290,38 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             super(itemView);
         }
     }
+
+
+   /* private void Like(String username, String mobile, String city, final String email, String password, String str_adharno, String education, final String profession, String brandname, String dream, String dob, String ann_date, String str_parent_id){
+        RetrofitAPI apiService = SignupClient.getClient().create(RetrofitAPI.class);
+        Call<SignupResponsemodel> call = apiService.insertuser(username,mobile,city,email,password, str_adharno, education,profession,brandname,dream,dob,ann_date,str_parent_id);
+        call.enqueue(new Callback<SignupResponsemodel>() {
+            @Override
+            public void onResponse(Call<SignupResponsemodel> call, Response<SignupResponsemodel> response) {
+
+                SignupResponsemodel insertFoodResponseModel = response.body();
+
+                if(insertFoodResponseModel.getStatus().equals("success")){
+
+                  //  Toast.makeText(SignupActivity.this, "Registration Success Please Make Payment", Toast.LENGTH_SHORT).show();
+                  //  progressBar_signup.setVisibility(View.INVISIBLE);
+                  //  button_makepayment.setVisibility(View.VISIBLE);
+
+                }else{
+                  //  progressBar_signup.setVisibility(View.INVISIBLE);
+                    //Toast.makeText(SignupActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SignupResponsemodel> call, Throwable t) {
+                progressBar_signup.setVisibility(View.INVISIBLE);
+                Toast.makeText(SignupActivity.this, "Something went wrong "+t.getCause(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }*/
+
 
 
 }

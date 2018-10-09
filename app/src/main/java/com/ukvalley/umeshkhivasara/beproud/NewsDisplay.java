@@ -21,6 +21,9 @@ import com.ukvalley.umeshkhivasara.beproud.model.singlenews.SingleNewsModel;
 import com.ukvalley.umeshkhivasara.beproud.supports.SessionManager;
 import com.ukvalley.umeshkhivasara.beproud.supports.SignupClient;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,6 +35,11 @@ public class NewsDisplay extends AppCompatActivity {
     ImageView newsimage;
     SessionManager sessionManager;
     ProgressBar progressBarnewsdisply;
+
+    ArrayList<String> elephantList;
+    int index = 0;
+
+    ImageView imageViewleft_arrow,imageView_right_arrow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +60,29 @@ public class NewsDisplay extends AppCompatActivity {
         newstilte=findViewById(R.id.dispalynewstitle);
         newsimage=findViewById(R.id.dispalynewsimage);
 
+        imageView_right_arrow=findViewById(R.id.right_arrow);
+        imageViewleft_arrow=findViewById(R.id.left_arrow);
+
+
+
         FetchSinglenews(id);
+
+
+
+
+
+        imageView_right_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(index <elephantList.size()){
+                    ChangeImage(elephantList.get(index));
+                    index++;
+                }
+                else index =0;
+
+            }
+        });
+
     }
 
 
@@ -67,15 +97,25 @@ public class NewsDisplay extends AppCompatActivity {
 
 
               //  Toast.makeText(NewsDisplay.this, response.body().getStatus(), Toast.LENGTH_SHORT).show();
-              newscity.setText(response.body().getData().getCity());
+                newscity.setText(response.body().getData().getCity());
                 newsdata.setText(response.body().getData().getDescription());
                 newsdate.setText(response.body().getData().getDate());
                 newstilte.setText(response.body().getData().getTitle());
 
+                String image_urls= response.body().getData().getImage();
 
-               Glide
+                elephantList = new ArrayList<>(Arrays.asList(image_urls.split(",")));
+
+
+                if (elephantList.size()>1)
+                {
+                    imageView_right_arrow.setVisibility(View.VISIBLE);
+                   // imageViewleft_arrow.setVisibility(View.VISIBLE);
+                }
+
+             Glide
                         .with(NewsDisplay.this)
-                        .load(BASE_URL_IMG + response.body().getData().getImage())
+                        .load(BASE_URL_IMG + elephantList.get(0))
                         .listener(new RequestListener<String, GlideDrawable>() {
                             @Override
                             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -138,6 +178,35 @@ public class NewsDisplay extends AppCompatActivity {
     public void onBackPressed() {
         NewsDisplay.this.finish();
     }
+
+
+    public void ChangeImage(String image_name)
+    {
+        Glide
+                .with(NewsDisplay.this)
+                .load(BASE_URL_IMG + image_name)
+                .listener(new RequestListener<String, GlideDrawable>() {
+                    @Override
+                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        // TODO: 08/11/16 handle failure
+                        // movieVH.mProgress.setVisibility(View.GONE);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        // image ready, hide progress now
+                        // movieVH.mProgress.setVisibility(View.GONE);
+                        return false;   // return false if you want Glide to handle everything else.
+                    }
+                })
+                .diskCacheStrategy(DiskCacheStrategy.ALL)   // cache both original & resized image
+                .fitCenter()
+                .crossFade()
+                .into(newsimage);
+    }
+
+
 }
 
 
